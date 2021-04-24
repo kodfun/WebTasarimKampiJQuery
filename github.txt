@@ -1,0 +1,15 @@
+# github reposu oluştuktan sonra ilk yükleyiş
+git init
+git add .
+git commit -m "jquery giriş"
+git remote add origin https://github.com/kodluyorumtv/WebTasarimKampiJQuery.git
+git push -u origin master
+
+# sonraki yaptığımız değişiklikleri gönderirken
+git add .
+git commit -m "değişikliği anlatan kısa bir ifade"
+git push
+
+# not:
+git status diyerek repo'nuzun o anki durumu hakkında
+bilgi edinebilirsiniz.
