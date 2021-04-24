@@ -26,6 +26,31 @@
         Lorem ipsum <span class="kirmizi">dolor</span> sit amet.
     </p>
 
+    <p>
+        <span style="display:none">Bir numaralı</span> arama motoru: 
+        <a href="https://google.com">Google</a>
+    </p>
+
+    <div style="display:none">
+        Bu element gizlidir.
+    </div>
+
+    <form>
+        <label for="ad">Ad:</label>
+        <input type="text" name="ad" id="ad"> <br />
+        <label for="soyad">Soyad:</label>
+        <input type="text" name="soyad" id="soyad"> <br />
+        <label for="sehir">Şehir:</label>
+        <select name="sehir" id="sehir">
+            <option value="6">Ankara</option>
+            <option value="34">İstanbul</option>
+            <option value="35">İzmir</option>
+        </select>
+        <input type="button" value="Gönder">
+    </form>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <button onclick="goster()">Tüm gizlileri göster</button>
     <script src="jquery-3.6.0.min.js"></script>
     <script>
         // her şeyi seç ve 2 css özelliğini değiştir
@@ -55,6 +80,47 @@
 
         // siblings: #oge5 sonraki kardeşleri
         $("#oge5 ~ *").css("border-left", "10px solid red");
+
+        // content filter örnekleri
+        // içinde dolor kelimesi geçen li'lerin sonuna D koy
+        $("li:contains('dolor')").append("D");
+
+        // içinde link içeren paragrafları seç
+        $("p:has(a)").append(" [link]");
+
+        function goster() {
+            // visiblity filter
+            $(":hidden").show();
+        }
+
+        // metin kutularının sağına * karakteri koy
+        $("input[type='text']").after(" *");
+
+        // append bir elementin içinin sonuna ekler
+        // after doğrudan sonrasına ekler
+
+        // name attribute'u d harfi ile bitenleri arka planını pembe yap
+        $("input[name$='d']").css("background-color", "pink");
+
+        // form elemanlarının seçimi
+        $("input:button").val("Kaydet");
+
+        // child filters
+        // ul'un içindeki li'lerin tek sırada olanlarının sonuna TEK
+        // çift sırada olanlarının sonuna ÇİFT yaz
+        $("ul > li:nth-child(odd)").append(" [Tek]");
+        $("ul > li:nth-child(even)").append(" [Çift]");
+
+        // ul'un içindeki 4. li'nin metnini GAZİ DSC yap
+        $("ul > li:nth-child(4)")
+            .text("GAZİ DSC")
+            .css("text-align", "center")
+            .css("border", "3px dashed blue")
+            .css("padding", "1rem");
+
+        // not: query ile seçim yapıldıktan sonra uygulanan metotlara uygulanan metotlar da aynı seçim üzerinde etkili olur
+        
+
     </script>
 
 </body>

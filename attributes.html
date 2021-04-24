@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .onemli::after {
+            content: "!";
+            color: red;
+            font-weight: bold;
+            font-size: 200%;
+        }
+        .pembe {
+            background-color: pink;
+        }
+        #cubuk {
+            width: 100px;
+            height: 20px;
+            background-color: red;
+        }
+
+        #ball {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            position: absolute;
+            top: 400px;
+            left: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <a href="#" id="link">Bir arama motoru</a> <br>
+    <input id="yor" type="checkbox"> Yoruldum <br>
+    <input type="checkbox"> Öğrendim <br>
+    <button class="pembe" onclick="degistir()">Bir Buton</button> <br>
+    Adet: <input type="number" id="adet"> <br>
+    <hr>
+    Genişlik: <input type="range" id="genislik" value="100" > <br>
+    <div id="cubuk"></div>
+
+    <hr>
+    <p id="parag" data-aciklama="güzel söz">
+        Lorem ipsum dolor sit amet consectetur adipisicing.
+    </p>
+
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        //$("a").css("text-decoration", "none");
+
+        // attr: bir elementin herhangi bir attribute'unun
+        // değerini almak ve güncellemek için kullanılır
+        $("a").attr("href", "https://google.com"); // değer atadık
+        $("input:checkbox#yor").prop("checked", true);
+        var id = $("a").attr("id"); // değerine eriştik
+        $("body").append("a'nın idsi: " + id);
+
+        // id'si link olanın sınıflarına onemli yi ekle
+        $("#link").addClass("onemli");
+
+        function degistir() {
+            $("button").toggleClass("pembe");
+        }
+
+        // form elemanlarının değerini değiştirme
+        $("#adet").val(33);
+
+        $("#genislik").on("input", function() {
+            var yeniDeger = $("#genislik").val();
+            $("#cubuk").width(yeniDeger).text(yeniDeger);
+
+        });
+
+        var aciklama = $("#parag").data("aciklama");
+        $("#parag").before("<h2>" + aciklama + "</h2>");
+        
+        // topun içerisine sayfadaki konumunun pozisyonunu yazdır
+        var konum = $("#ball").offset();
+        console.log(konum);
+        $("#ball").html("top: " + konum.top + "<br>left: " + konum.left);
+    </script>
+</body>
+</html>
