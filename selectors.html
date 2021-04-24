@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>jQuery Selectors</title>
+</head>
+<body>
+    <!-- https://oscarotero.com/jquery/ -->
+    <!-- ul>li*10>lorem4 -->
+    <ul>
+        <li title="iki açıklama">Lorem ipsum dolor sit.</li>
+        <li>Velit expedita quia temporibus?</li>
+        <li class="kirmizi">Ut hic ullam dignissimos.</li>
+        <li>Unde beatae temporibus corporis!</li>
+        <li id="oge5">Qui eum dolorem necessitatibus?</li>
+        <li>Nesciunt reiciendis fuga nisi.</li>
+        <li class="kirmizi">Fugit molestiae minus corporis?</li>
+        <li>Incidunt quidem assumenda saepe.</li>
+        <li title="bir açıklama">Iste aspernatur!</li>
+        <li>Commodi dicta tempora a.</li>
+    </ul>
+
+    <p title="bir açıklama">
+        Lorem ipsum <span class="kirmizi">dolor</span> sit amet.
+    </p>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        // her şeyi seç ve 2 css özelliğini değiştir
+        // $("*").css({
+        //     "border": "3px solid black",
+        //     "margin": "6px"
+        // });
+
+        // element ismiyle seçim: tüm li'leri seç, hepsinin sonuna gülücük koy
+        $("li").append(" :)");
+        // $("ul").css("list-style", "none");
+
+        // class ile seçim:
+        $(".kirmizi").css("color", "red");
+
+        // id ile seçim:
+        $("#oge5").css("text-decoration", "underline");
+
+        // title attribute'unda bir açıklama yazanları seç
+        $('[title="bir açıklama"]').css("background-color", "yellow");
+
+        // çoklu seçim: oge5 id'li kirmizi class'lıların başına + koy
+        $("#oge5, .kirmizi").prepend("+ ");
+
+        // css hiyerarşi: paragraf içindeki kirmizi sınıfına sahip olanlar
+        $("p > .kirmizi").css("background-color", "gray");
+
+        // siblings: #oge5 sonraki kardeşleri
+        $("#oge5 ~ *").css("border-left", "10px solid red");
+    </script>
+
+</body>
+</html>
