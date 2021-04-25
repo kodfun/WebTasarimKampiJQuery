@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // bu jquery ile ilgili değildir
+        // normal javascript (ecmascript 6) bilgisidir
+
+        let dizi = ["ankara", "istanbul", "izmir"];
+        // aralarına tire koyarak yazdır
+        document.write(dizi.join('-'));
+        document.write("<hr>")
+
+        // dizinin elemanlarının uzunluklarını aralarına tire koyarak yazdır
+        let sayilar = dizi.map(x => x.length);
+        document.write(sayilar.join('-'));
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - Traversal</title>
+</head>
+<body>
+    <ul>
+        <li class="haric">Özgür</li>
+        <li>Ceren</li>
+        <li class="haric">Enes Fuat</li>
+        <li>Emek</li>
+        <li>Doğukan</li>
+        <li>Fuat</li>
+        <li>Kedi</li>
+        <li class="haric">Okan</li>
+        <li class="haric">Samet</li>
+        <li class="haric">Rümeysa</li>
+    </ul>
+    <textarea id="ozet" rows="10" cols="40"></textarea>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        var liler = $("li");
+        // li'lerin ilki
+        yazdir("İlk kişi: " + liler.first().text());
+        // li'lerin sonuncusu
+        yazdir("Son kişi: " + liler.last().text());
+        // li'lerin besincisi
+        yazdir("5. kişi: " + liler.eq(4).text());
+
+        // yedinci'den sonraki isimleri al
+        var adlar = liler.eq(6).nextAll().map(function() {
+            return this.innerText;
+        }).get().join(', ');
+        yazdir("7. sonrası: " + adlar);
+        // yazdir("7. sonrası: " + liler.eq(6).nextAll().text());
+
+        // İlk bulduğu fuat'tan sonrakini yazdir
+        var sonraki = liler.filter(function(index, li) {
+            return li.innerText == "Fuat";
+        }).first().next().text();
+        yazdir("Fuat sonrası: " + sonraki);
+
+        // liste öğelerinin sonuncusunun kardeşlerini italic yap
+        liler.last().siblings().css("font-style", "italic");
+
+        // liste öğelerinin beşincisinin sonrasını bold yap
+        liler.eq(4).nextAll().css("font-weight", "bold");
+
+        // liste öğelerinden haric sınıfına sahip OLMAYANLARI getir
+        var dahiller = liler.not(".haric").get().map(x => x.innerText).join(', ');
+        yazdir("haric sınıfsızlar: " + dahiller);
+
+        
+
+        function yazdir(metin) {
+            var icerik = $("#ozet").val();
+            $("#ozet").val(icerik  + metin + "\n");
+
+        }
+    </script>
+</body>
+</html>
