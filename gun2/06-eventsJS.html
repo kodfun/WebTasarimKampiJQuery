@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h2>Tıklanınca Kaybolan Butonlar</h2>
+    <button onclick="this.remove()">Buton 1</button>
+    <button onclick="this.remove()">Buton 2</button>
+    <button onclick="this.remove()">Buton 3</button>
+    <button onclick="this.remove()">Buton 4</button>
+
+    <h2>Tıklanınca Kızaran Kelimeler</h2>
+    <p id="tesekkur">
+        <span>Gazi</span>
+        <span>DSC</span>
+        <span>topluluğuna</span>
+        <span>teşekkür</span>
+        <span>ederiz.</span>
+    </p>
+    <hr>
+    <h2>Şehirler</h2>
+    <form id="frmSehir">
+        <label for="ad"></label>
+        <input type="text" name="isim" id="ad" required />
+        <button type="submit">Ekle</button>
+    </form>
+    <ul id="sehirler"></ul>
+    
+
+    <script>
+        var frmSehir = document.getElementById("frmSehir");
+        var inputAd = document.getElementById("ad");
+        var ulSehirler = document.getElementById("sehirler");
+        frmSehir.addEventListener("submit", function(event) {
+            event.preventDefault(); // formun varsayılan davranışını devre dışı bırak (teslim etme özelliği)
+            var sehirAd = inputAd.value;
+            var li = document.createElement("li");
+            li.ondblclick = function() {
+                this.remove();
+            };
+            li.innerHTML = sehirAd;
+            ulSehirler.appendChild(li);
+            this.reset();
+        });
+
+        var spanlar = document.querySelectorAll("p#tesekkur > span");
+        for (var span of spanlar) {
+            span.onclick = function() {
+                this.style.color = "blue";
+                // this.remove(); // kaldırmak isterseniz..
+            };
+        }
+    </script>
+
+</body>
+</html>
