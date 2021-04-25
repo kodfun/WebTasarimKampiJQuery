@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kare {
+            width: 50px;
+            height: 50px;
+            background-color: darkorange;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="kare"></div>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        var hiz = 10;
+
+        $("body").keydown(function(event) {
+            var x = $("#kare").offset().left;
+            var y = $("#kare").offset().top;
+
+            // sol: 37 ust: 38 sag: 39 alt: 40
+            switch (event.which) {
+                case 37:
+                    x -= hiz;
+                    break;
+                case 38:
+                    y -= hiz;
+                    break;
+                case 39:
+                    x += hiz;
+                    break;
+                case 40:
+                    y += hiz;
+                    break;
+            }
+            $("#kare").offset({ left: x, top: y });
+        });
+    </script>
+</body>
+</html>

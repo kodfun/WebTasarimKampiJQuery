@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>İlginç Bilgi</h3>
+    <div id="bilgi"></div>
+
+    <hr>
+    <a href="#" id="btnKisiler">Kişileri Yükle</a>
+    <h3>Kişiler</h3>
+    <ul id="kisiler"></ul>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        // bilgi.txt dosya içeriğini oku 
+        // ve #bilgi id'li elementin içine içeriğini koy
+        $("#bilgi").load("bilgi.txt");
+
+        $("#btnKisiler").click(function() {
+            $.ajax({
+                url: "kisiler.json",
+                type: "get",
+                success: function(sonuc) {
+                    for (var ad of sonuc) {
+                        $("ul#kisiler").append("<li>" + ad + "</li>")
+                    }
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
